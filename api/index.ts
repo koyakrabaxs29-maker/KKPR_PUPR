@@ -17,7 +17,7 @@ app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ limit: '10mb', extended: true }));
 
 // Setup local uploads storage directory with serverless fallback
-const isServerless = !!process.env.VERCEL;
+const isServerless = !!process.env.VERCEL || !!process.env.PORT || process.env.NODE_ENV === 'production';
 const UPLOADS_DIR = isServerless
   ? path.join('/tmp', 'uploads')
   : path.join(process.cwd(), 'uploads');
@@ -752,7 +752,7 @@ function serveStatic() {
 }
 
 async function startServer() {
-  const isProduction = process.env.NODE_ENV === 'production';
+  const isProduction = process.env.NODE_ENV === 'production' || !!process.env.PORT || fs.existsSync(path.join(process.cwd(), 'dist'));
   if (!isProduction) {
     try {
       const vite = await createViteServer({

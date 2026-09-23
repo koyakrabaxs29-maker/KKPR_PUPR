@@ -9,7 +9,7 @@ interface DatabaseSchema {
   logs: VerificationLog[];
 }
 
-const isServerless = !!process.env.VERCEL;
+const isServerless = !!process.env.VERCEL || !!process.env.PORT || process.env.NODE_ENV === 'production';
 const DB_PATH = isServerless 
   ? path.join('/tmp', 'database.json') 
   : path.join(process.cwd(), 'database.json');
