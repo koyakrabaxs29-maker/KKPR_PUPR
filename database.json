@@ -1,0 +1,79 @@
+{
+  "users": [
+    {
+      "id": "usr_pemohon1",
+      "email": "pemohon@gmail.com",
+      "name": "Budi Santoso (CV. Maju Jaya)",
+      "role": "Pemohon",
+      "passwordHash": "5b995c09a181e079aae4548b7563f78e7c09c2bbe2fa5cffc0521aafadfa74fa",
+      "createdAt": "2026-09-21T08:59:44.844Z"
+    },
+    {
+      "id": "usr_verifikator1",
+      "email": "petugas@kkpr.go.id",
+      "name": "Siti Aminah, S.T. (Dinas Tata Ruang)",
+      "role": "Petugas Verifikator",
+      "passwordHash": "09f7b0e4cff837eec0f1f61b30aa1938615cd374eda0e6a9e6cc1fd72b98dc09",
+      "createdAt": "2026-09-21T08:59:44.845Z"
+    }
+  ],
+  "submissions": [
+    {
+      "id": "RegKKPR-001-IX-2026",
+      "userId": "usr_pemohon1",
+      "applicantName": "Heri",
+      "applicantAddress": "Griya Praja",
+      "identityType": "KTP",
+      "identityNumber": "2102032907800003",
+      "phoneNumber": "",
+      "companyName": "",
+      "npwp": "49.158.511.3-223.000",
+      "coordinates": "1.011074, 103.430812",
+      "polygonGIS": "1°00'39.9\"N 103°25'50.9\"E",
+      "landArea": 1000,
+      "plannedActivity": "Rumah Tinggal",
+      "technicalSpecifications": "",
+      "technicalDetails": "",
+      "status": "Ditolak",
+      "documents": [
+        {
+          "id": "doc_6cae13aa",
+          "name": "8. Pernyataan Mandiri Pelaku Usaha UMK yang telah diterbitkan secara online (Otomatis) (Khusus Badan Usaha) [Terbit Otomatis Sistem OSS]",
+          "type": "application/pdf",
+          "size": 64200,
+          "fileUrl": "/uploads/sistem_oss_doc_8.pdf",
+          "status": "Pending"
+        },
+        {
+          "id": "doc_efd2a9fd",
+          "name": "9. KKPR yang telah diterbitkan secara online (Otomatis) (Khusus Badan Usaha) [Terbit Otomatis Sistem OSS]",
+          "type": "application/pdf",
+          "size": 64200,
+          "fileUrl": "/uploads/sistem_oss_doc_9.pdf",
+          "status": "Pending"
+        }
+      ],
+      "createdAt": "2026-09-21T11:21:21.228Z",
+      "updatedAt": "2026-09-21T11:23:54.934Z",
+      "rejectionReason": "Tidak ada berkas lampiran yang dibutuhkan"
+    }
+  ],
+  "logs": [
+    {
+      "id": "log_init_001",
+      "submissionId": "RegKKPR-001-IX-2026",
+      "verifierName": "Sistem KKPR",
+      "status": "Pending",
+      "notes": "Permohonan baru berhasil diajukan oleh pemohon (Heri) dengan 2 berkas terlampir. Berkas masuk antrean verifikasi dinas.",
+      "createdAt": "2026-09-21T11:21:21.228Z"
+    },
+    {
+      "id": "log_3cb90a2c",
+      "submissionId": "RegKKPR-001-IX-2026",
+      "verifierName": "Siti Aminah, S.T. (Dinas Tata Ruang)",
+      "status": "Ditolak",
+      "notes": "Keputusan Final oleh Petugas: status permohonan ditetapkan menjadi [Ditolak]. Alasan: Tidak ada berkas lampiran yang dibutuhkan",
+      "createdAt": "2026-09-21T11:23:54.934Z"
+    }
+  ]
+}

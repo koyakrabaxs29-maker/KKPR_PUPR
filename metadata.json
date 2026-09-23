@@ -1,0 +1,6 @@
+{
+  "name": "PUPR KARIMUN - KKPR",
+  "description": "Sistem Informasi Pengajuan dan Verifikasi Kesesuaian Kegiatan Pemanfaatan Ruang (KKPR) untuk Pemohon dan Petugas Verifikator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
