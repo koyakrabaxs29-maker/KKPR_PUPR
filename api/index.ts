@@ -10,7 +10,7 @@ import { User, KKPRSubmission, KKPRDocument, SubmissionStatus, DocumentStatus } 
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
 // Increase payload size limit to accommodate PDF/Image base64 uploads up to 10MB
 app.use(express.json({ limit: '10mb' }));
@@ -737,19 +737,35 @@ app.post('/api/kkpr/submissions/reset', authenticateToken, (req: any, res: any) 
 
 // ==================== VITE & PORT INGRESS INTEGRATION ====================
 
-async function startServer() {
-  if (process.env.NODE_ENV !== 'production') {
-    const vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: 'spa',
-    });
-    app.use(vite.middlewares);
-  } else {
-    const distPath = path.join(process.cwd(), 'dist');
+function serveStatic() {
+  const distPath = path.join(process.cwd(), 'dist');
+  if (fs.existsSync(distPath)) {
     app.use(express.static(distPath));
     app.get('*', (req, res) => {
       res.sendFile(path.join(distPath, 'index.html'));
     });
+  } else {
+    app.get('*', (req, res) => {
+      res.status(404).send('Direktori build "dist" tidak ditemukan. Pastikan Anda menjalankan "npm run build" terlebih dahulu.');
+    });
+  }
+}
+
+async function startServer() {
+  const isProduction = process.env.NODE_ENV === 'production';
+  if (!isProduction) {
+    try {
+      const vite = await createViteServer({
+        server: { middlewareMode: true },
+        appType: 'spa',
+      });
+      app.use(vite.middlewares);
+    } catch (e) {
+      console.warn('Gagal memulai Vite dev middleware, fallback ke static serving:', e);
+      serveStatic();
+    }
+  } else {
+    serveStatic();
   }
 
   app.listen(PORT, '0.0.0.0', () => {
